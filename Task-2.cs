@@ -1,5 +1,12 @@
 namespace ConsoleApp2
 {
+    /*
+     * Выполнили работу (задание 1)
+     * 
+     * Василенко Никита
+     * Соловьев Павел
+     * Воробьев Даниил
+    */
     internal class Program
     {
 
@@ -37,6 +44,32 @@ namespace ConsoleApp2
                 // TODO menu
 
             }
+        }
+
+        static void Work()
+        {
+            Console.Clear();
+            Console.WriteLine("===============");
+            Console.WriteLine("Выберите работу: ");
+            Console.WriteLine("===============");
+            Console.WriteLine("1.Простая работа - 10 монет");
+            Console.WriteLine("2.Адская работа - 20 монет");
+            Console.WriteLine("===============");
+            Console.Write("Выбор: ");
+
+            string job = Console.ReadLine();
+
+            if (jobs.ContainsKey(job))
+            {
+                coins += jobs[job];
+                Console.WriteLine("Вы заработали " + jobs[job] + "монет");
+            }
+            else
+            {
+                Console.WriteLine("Работы не существует!");
+            }
+
+            Console.ReadKey();
         }
     }
 }
