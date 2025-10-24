@@ -1,12 +1,5 @@
 namespace ConsoleApp2
 {
-    /*
-     * Выполнили работу (задание 1)
-     * 
-     * Василенко Никита
-     * Соловьев Павел
-     * Воробьев Даниил
-    */
     internal class Program
     {
 
@@ -41,8 +34,9 @@ namespace ConsoleApp2
                 Console.Write("Выбор: ");
 
                 string choice = Console.ReadLine();
-                // TODO menu
-
+                if (choice == "1") Work();
+                else if (choice == "2") Buy();
+                else if (choice == "3") break;
             }
         }
 
@@ -57,7 +51,14 @@ namespace ConsoleApp2
             Console.WriteLine("===============");
             Console.Write("Выбор: ");
 
-            string job = Console.ReadLine();
+            string? job = Console.ReadLine();
+
+            if (job == null) 
+            {
+                Console.WriteLine("Введите работу");
+                Console.ReadKey();
+                return;
+            }
 
             if (jobs.ContainsKey(job))
             {
@@ -67,6 +68,41 @@ namespace ConsoleApp2
             else
             {
                 Console.WriteLine("Работы не существует!");
+            }
+
+            Console.ReadKey();
+        }
+
+        static void Buy()
+        {
+            Console.Clear();
+            Console.WriteLine("===============");
+            Console.WriteLine("Монеты: " + coins);
+            Console.WriteLine("===============");
+            Console.WriteLine("1. Булочка - 15 монет");
+            Console.WriteLine("2. Двойная булочка - 40 монет");
+            Console.WriteLine("===============");
+            Console.Write("Выбор: ");
+
+            string item = Console.ReadLine();
+
+            if (shop.ContainsKey(item))
+            {
+                if (coins >= shop[item])
+                {
+                    coins -= shop[item];
+                    bulochkas++;
+                    if (item == "2") bulochkas++;
+                    Console.WriteLine("Куплено");
+                }
+                else
+                {
+                    Console.WriteLine("Не хватает монет");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Нет такого товара");
             }
 
             Console.ReadKey();
